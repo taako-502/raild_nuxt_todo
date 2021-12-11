@@ -1,22 +1,15 @@
-FROM node:14.16.1-alpine
+FROM node:12.5.0-alpine
 
-ARG WORKDIR
-ARG CONTAINER_PORT
-ARG API_URL
-ARG API_URL_BROWSER
-
-ENV HOME=/${WORKDIR} \
+ENV HOME="/app" \
     LANG=C.UTF-8 \
-    TZ=Asia/Tokyo \
-    HOST=0.0.0.0 \
-    API_URL=${API_URL} \
-    API_URL_BROWSER=${API_URL_BROWSER}
+    TZ=Asia/Tokyo 
 
 WORKDIR ${HOME}
 
-# COPY package*.json ./
-# RUN yarn install
-# COPY . ./
-# RUN yarn run build
+RUN apk update && \
+    apk upgrade && \
+    npm install -g npm && \
+    npm install -g @vue/cli
 
-EXPOSE ${CONTAINER_PORT}
+ENV HOST 0.0.0.0
+EXPOSE 3000
