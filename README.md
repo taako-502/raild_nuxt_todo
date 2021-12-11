@@ -40,5 +40,7 @@ docker-compose up front
 `http://localhost:8080`を開く。
 
 ## 参考
-https://qiita.com/at-946/items/08de3c9d7611f62b1894
-https://qiita.com/rearail/items/0141dd7c754c97f009e3
+- [Nuxt.js + Rails(API) on DockerのHello Worldするべ！](https://qiita.com/at-946/items/08de3c9d7611f62b1894)
+- [Nuxt.js × Rails APIモードでアプリケーションを作る](https://qiita.com/rearail/items/0141dd7c754c97f009e3)
+- [@nuxtjs/axios](https://www.npmjs.com/package/@nuxtjs/axios)
+- [AtomのVue.js関係プラグインまとめ](https://qiita.com/mrmr/items/f6927eb2fe5aa13a2f90)
