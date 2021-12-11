@@ -3,6 +3,11 @@
 docker-compose build
 ```
 
+以下のコマンドでDockerを立ち上げ。
+```
+docker-compose up
+```
+
 ## Nuxt
 以下のコマンドを実行。
 ```
