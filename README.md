@@ -1,3 +1,10 @@
+## 実行方法
+```
+docker-compose up front
+rm -f /app/tmp/pids/server.pid
+docker-compose up back
+```
+
 ## Rails
 ```
 docker-compose build
@@ -32,12 +39,10 @@ create-nuxt-app v3.7.1
 ? Version control system: None
 ```
 
-実行
-```
-docker-compose up front
-```
+`http://localhost:8080`を開く。<br>
 
-`http://localhost:8080`を開く。
+Hello World.<br>
+http://localhost:8080/users/new
 
 ## 参考
 - [Nuxt.js + Rails(API) on DockerのHello Worldするべ！](https://qiita.com/at-946/items/08de3c9d7611f62b1894)
