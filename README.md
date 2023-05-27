@@ -1,29 +1,30 @@
+# Rails Nuxt Todo
 ## 実行方法
-```
-docker-compose up front
-rm -f /app/tmp/pids/server.pid
-docker-compose up back
+```bash
+$ docker-compose up front
+$ rm -f /app/tmp/pids/server.pid
+$ docker-compose up back
 ```
 
 ## Rails
-```
-docker-compose build
+```bash
+$ docker-compose build
 ```
 
 以下のコマンドでDockerを立ち上げ。
-```
-docker-compose up
+```bash
+$ docker-compose up
 ```
 
 ## Nuxt
 以下のコマンドを実行。
-```
-docker-compose run --rm front npx create-nuxt-app --overwrite-dir
+```bash
+$ docker-compose run --rm front npx create-nuxt-app --overwrite-dir
 ```
 
 以下のように入力。
-```
-create-nuxt-app v3.7.1
+```bash
+$ create-nuxt-app v3.7.1
 ✨  Generating Nuxt.js project in .
 ? Project name: sample_app
 ? Programming language: TypeScript
