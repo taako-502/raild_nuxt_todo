@@ -1,7 +1,7 @@
-FROM ruby:2.6.3-alpine3.10
+FROM ruby:3.2.2
 
-ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git" \
-    DEV_PACKAGES="build-base curl-dev" \
+ENV RUNTIME_PACKAGES="libxml2-dev make gcc libc6-dev nodejs tzdata libpq-dev git curl" \
+    DEV_PACKAGES="build-essential libcurl4-openssl-dev" \
     HOME="/app" \
     LANG=C.UTF-8 \
     TZ=Asia/Tokyo
@@ -11,12 +11,14 @@ WORKDIR ${HOME}
 ADD Gemfile ${HOME}/Gemfile
 ADD Gemfile.lock ${HOME}/Gemfile.lock
 
-RUN apk update && \
-    apk upgrade && \
-    apk add --update --no-cache ${RUNTIME_PACKAGES} && \
-    apk add --update --virtual build-dependencies --no-cache ${DEV_PACKAGES} && \
+RUN apt-get update -yqq && \
+    apt-get upgrade -yqq && \
+    apt-get install -yqq --no-install-recommends ${RUNTIME_PACKAGES} && \
+    apt-get install -yqq --no-install-recommends ${DEV_PACKAGES} && \
     bundle install -j4 && \
-    apk del build-dependencies
+    apt-get autoremove -yqq --purge ${DEV_PACKAGES} && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 ADD . ${HOME}
 
