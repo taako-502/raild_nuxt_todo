@@ -1,9 +1,9 @@
 # Rails Nuxt Todo
 ## 実行方法
 ```bash
-$ docker-compose up front
+$ docker-compose up front -d
 $ rm -f /app/tmp/pids/server.pid
-$ docker-compose up back
+$ docker-compose up back -d
 ```
 
 ## Rails
