@@ -34,3 +34,4 @@ back/.ash_history
 
 # Ruby
 .gem
+.local
