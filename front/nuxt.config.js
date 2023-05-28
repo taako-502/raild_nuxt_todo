@@ -40,11 +40,12 @@ export default {
   ],
 
   axios: {
-    proxy: true
+    proxy: false,
+    baseURL: 'http://localhost:3000',
   },
 
   proxy: {
-    '/api/': { target: 'http://back:3000', pathRewrite: { '^/api/': '/' } }
+    '/api/': { target: 'http://localhost:3000', pathRewrite: { '^/api/': '/' } }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
