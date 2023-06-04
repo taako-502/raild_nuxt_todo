@@ -18,6 +18,12 @@ namespace :greet do
   task say_hello_optional: :environment do
     greet('السلام عليكم')
   end
+
+  desc "mock_test"
+  # docker-compose run back bundle exec rake greet:mock_test
+  task mock_test: :environment do
+    puts Greet.new.test
+  end
 end
 
 def greet_chinese
@@ -30,4 +36,16 @@ end
 
 def test
   return 'test'
+end
+
+class Greet
+  def test
+    return GreetNested.new.test_nested
+  end
+end
+
+class GreetNested
+  def test_nested
+    return 'test'
+  end
 end

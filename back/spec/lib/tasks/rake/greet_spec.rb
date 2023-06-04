@@ -11,9 +11,17 @@ RSpec.describe 'greet' do
     Rake::Task.define_task(:environment)
   end
 
-  describe 'test' do
-    it 'test' do
+  describe 'greet:say_hello' do
+    it 'say_hello' do
       expect { Rake::Task['greet:say_hello'].invoke }.to output("Hello, World!\n").to_stdout
+    end
+  end
+
+
+  describe 'greet:mock_test' do
+    it 'greet.mock_test' do
+      expect_any_instance_of(Greet).to receive(:test).and_return('mocked_test_result')
+      expect { Rake::Task['greet:mock_test'].invoke }.to output("mocked_test_result\n").to_stdout
     end
   end
 
