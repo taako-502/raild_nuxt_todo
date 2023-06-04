@@ -27,3 +27,7 @@ end
 def greet(greeting = "Hello, World!")
   puts greeting
 end
+
+def test
+  return 'test'
+end
