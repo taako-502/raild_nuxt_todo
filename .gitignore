@@ -31,6 +31,8 @@
 .DS_Store
 front/package-lock.json
 back/.ash_history
+back/.bash_history
+back/.local/
 
 # Ruby
 .gem
