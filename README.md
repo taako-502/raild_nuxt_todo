@@ -4,7 +4,7 @@
 ```bash
 $ docker-compose build
 $ rm -f /app/tmp/pids/server.pid
-$ docker-compose up back -då
+$ docker-compose up back -d
 ```
 
 ### Nuxt
