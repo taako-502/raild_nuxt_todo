@@ -11,6 +11,12 @@ RSpec.describe 'greet' do
     Rake::Task.define_task(:environment)
   end
 
+  describe 'test' do
+    it 'test' do
+      expect { Rake::Task['greet:say_hello'].invoke }.to output("Hello, World!\n").to_stdout
+    end
+  end
+
   describe 'greet_chinese' do
     it '你好を出力する' do
       expect { greet_chinese }.to output("你好\n").to_stdout
