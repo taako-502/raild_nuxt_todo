@@ -16,5 +16,10 @@
   "devDependencies": {
     "@nuxt/types": "^2.15.7",
     "@nuxt/typescript-build": "^2.1.0"
+  },
+  "volta": {
+    "node": "18.17.0",
+    "npm": "9.6.7",
+    "yarn": "3.6.1"
   }
 }
