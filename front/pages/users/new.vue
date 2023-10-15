@@ -17,8 +17,9 @@ const name = ref("");
 const post = async () => {
   const { $repository } = useNuxtApp();
   const axios = $repository.getAxios();
-  const users = await axios.post("/api/users", { name: name.value });
+  const response = await axios.post("/api/users", { name: name.value });
+  if (!response || !response.data || !response.data.id) return;
   const router = useRouter();
-  router.push(`${users.id}`);
+  router.push(`${response.data.id}`);
 };
 </script>
