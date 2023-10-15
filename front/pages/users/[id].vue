@@ -1,6 +1,7 @@
 <template>
   <h1>Hello, {{ name }}</h1>
   <NuxtLink to="/users/new">Back</NuxtLink>
+  <NuxtLink to="/">Back to Top</NuxtLink>
 </template>
 
 <script setup type="ts">

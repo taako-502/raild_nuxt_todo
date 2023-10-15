@@ -8,18 +8,19 @@
         <button type="submit">submit</button>
       </form>
     </div>
+    <NuxtLink to="/">Back</NuxtLink>
   </section>
 </template>
 
 <script setup lang="ts">
-const name = ref("");
+const name = ref('')
 
 const post = async () => {
-  const { $repository } = useNuxtApp();
-  const axios = $repository.getAxios();
-  const response = await axios.post("/api/users", { name: name.value });
-  if (!response || !response.data || !response.data.id) return;
-  const router = useRouter();
-  router.push(`${response.data.id}`);
-};
+  const { $repository } = useNuxtApp()
+  const axios = $repository.getAxios()
+  const response = await axios.post('/api/users', { name: name.value })
+  if (!response || !response.data || !response.data.id) return
+  const router = useRouter()
+  router.push(`${response.data.id}`)
+}
 </script>
