@@ -11,24 +11,14 @@
   </section>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      name: ''
-    }
-  },
-  methods: {
-    post() {
-      this.$axios.post(
-        '/api/users',
-        {
-          name: this.name
-        }
-      ).then((res) => {
-        this.$router.push(`${res.data.id}`)
-      })
-    }
-  }
-}
+<script setup lang="ts">
+const name = ref("");
+
+const post = async () => {
+  const { $repository } = useNuxtApp();
+  const axios = $repository.getAxios();
+  const users = await axios.post("/api/users", { name: name.value });
+  const router = useRouter();
+  router.push(`${users.id}`);
+};
 </script>
