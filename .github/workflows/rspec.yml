@@ -34,6 +34,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # ソケットを確認
+      - name: Show MySQL socket information
+        run: |
+          docker exec ${{ job.services.mysql.id }} ls -la /var/run/mysqld/
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
