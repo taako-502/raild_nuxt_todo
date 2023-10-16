@@ -8,16 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
-
-    # services:
-    #   db:
-    #     image: mariadb:latest
-    #     env:
-    #       MYSQL_ROOT_PASSWORD: password
-    #       MYSQL_DATABASE: root
-    #     ports:
-    #       - 3306:3306
-    #     options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      DATABASE_HOST: 127.0.0.1 # host: 127.0.0.1 # NOTE: localhostにするとsocketを参照するためエラーになる
 
     services:
       mysql:
@@ -33,15 +24,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Show MySQL Logs
-        run: |
-          docker logs ${{ job.services.mysql.id }}
-
-      # ソケットを確認
-      - name: Show MySQL socket information
-        run: |
-          docker exec ${{ job.services.mysql.id }} ls -la /var/run/mysqld/
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1

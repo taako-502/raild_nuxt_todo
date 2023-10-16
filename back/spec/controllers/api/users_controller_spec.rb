@@ -37,7 +37,8 @@ RSpec.describe Api::UsersController, type: :controller do # rubocop:disable Metr
 
   describe 'POST #create' do
     context 'with valid attributes' do
-      let(:valid_attributes) { { name: Faker::Name.name } }
+      let(:valid_attributes) { { name: Faker::Alphanumeric.alphanumeric(number: 10) } }
+      let(:user) { }
 
       it 'creates a new user' do
         expect do
@@ -58,7 +59,7 @@ RSpec.describe Api::UsersController, type: :controller do # rubocop:disable Metr
   end
 
   describe 'PATCH #update' do
-    let(:new_name) { Faker::Name.name }
+    let(:new_name) { Faker::Alphanumeric.alphanumeric(number: 10) }
 
     before do
       patch :update, params: { id: user.id, user: { name: new_name } }
