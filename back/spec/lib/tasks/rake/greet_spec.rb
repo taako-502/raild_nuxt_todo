@@ -17,7 +17,6 @@ RSpec.describe 'greet' do
     end
   end
 
-
   describe 'greet:mock_test' do
     it 'greet.mock_test 1' do
       expect_any_instance_of(Greet).to receive(:test).and_return('mocked_test_result')
@@ -28,7 +27,7 @@ RSpec.describe 'greet' do
       mock_greet = instance_double(Greet)
       allow(Greet).to receive(:new).and_return(mock_greet)
       allow(mock_greet).to receive(:test).and_return('mocked_test_result')
-      
+
       Rake::Task['greet:mock_test'].reenable
       expect { Rake::Task['greet:mock_test'].invoke }.to output("mocked_test_result\n").to_stdout
       expect(mock_greet).to have_received(:test)
@@ -43,7 +42,7 @@ RSpec.describe 'greet' do
 
   describe 'test' do
     it 'test' do
-      expect(test).to eq "test"
+      expect(test).to eq 'test'
     end
   end
 end
