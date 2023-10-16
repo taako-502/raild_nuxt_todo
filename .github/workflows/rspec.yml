@@ -17,6 +17,16 @@ jobs:
     #       - 3306:3306
     #     options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
+    services:
+      mysql:
+        image: mysql:8.0.23
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,12 +36,12 @@ jobs:
         with:
           ruby-version: 3.2.2
 
-      - name: Setup MariaDB
-        shell: bash
-        env:
-          MYSQL_DATABASE: testdb
-        run: |
-          docker-compose up -d
+      # - name: Setup MariaDB
+      #   shell: bash
+      #   env:
+      #     MYSQL_DATABASE: testdb
+      #   run: |
+      #     docker-compose up -d
 
       - name: Run RSpec
         run: |
