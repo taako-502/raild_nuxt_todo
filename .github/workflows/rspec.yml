@@ -34,10 +34,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Show MySQL Logs
+        run: |
+          docker logs ${{ job.services.mysql.id }}
+
       # ソケットを確認
       - name: Show MySQL socket information
         run: |
-          docker ps
           docker exec ${{ job.services.mysql.id }} ls -la /var/run/mysqld/
 
       - name: Confirm MySQL is running
