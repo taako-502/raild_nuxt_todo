@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Api::UsersController, type: :controller do
+RSpec.describe Api::UsersController, type: :controller do # rubocop:disable Metrics/BlockLength
   let(:user) { create(:user) }
 
   describe 'GET #index' do

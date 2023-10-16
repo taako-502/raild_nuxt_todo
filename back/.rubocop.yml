@@ -1,0 +1,3 @@
+# class構文の上にコメントを書かなくてもよいように無効
+Style/Documentation:
+  Enabled: false

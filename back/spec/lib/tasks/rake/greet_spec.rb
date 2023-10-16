@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'rake'
 
-RSpec.describe 'greet' do
+RSpec.describe 'greet' do # rubocop:disable Metrics/BlockLength
   let(:greet_path) { 'tasks/greet' }
 
   before do
