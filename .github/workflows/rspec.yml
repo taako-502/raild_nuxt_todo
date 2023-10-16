@@ -39,6 +39,20 @@ jobs:
         run: |
           docker exec ${{ job.services.mysql.id }} ls -la /var/run/mysqld/
 
+      - name: Confirm MySQL is running
+        run: |
+          until mysqladmin ping -h 127.0.0.1 --silent; do
+            sleep 1
+          done
+
+      - name: Show running MySQL processes
+        run: |
+          docker exec ${{ job.services.mysql.id }} ps aux | grep mysqld
+
+      - name: Check socket file permissions
+        run: |
+          docker exec ${{ job.services.mysql.id }} ls -la /var/run/mysqld/
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
