@@ -1,0 +1,23 @@
+name: RSpec
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+
+      - name: Run RSpec
+        run: |
+          cd back
+          bundle install
+          bundle exec rspec
