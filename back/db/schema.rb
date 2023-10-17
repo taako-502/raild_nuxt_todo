@@ -12,10 +12,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_211_211_145_928) do
-  create_table 'users', charset: 'utf8mb3', collation: 'utf8mb3_general_ci', force: :cascade do |t|
-    t.string 'name'
+ActiveRecord::Schema[7.0].define(version: 20_231_016_201_030) do
+  create_table 'tasks', charset: 'utf8mb3', collation: 'utf8mb3_general_ci', force: :cascade do |t|
+    t.bigint 'user_id'
+    t.string 'content'
+    t.boolean 'is_completed', default: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'fk_rails_4d2a9e4d7e'
   end
+
+  create_table 'users', charset: 'utf8mb3', collation: 'utf8mb3_general_ci', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: nil, null: false
+    t.datetime 'updated_at', precision: nil, null: false
+  end
+
+  add_foreign_key 'tasks', 'users'
 end
