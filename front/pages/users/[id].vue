@@ -1,5 +1,6 @@
 <template>
   <h1>Hello, {{ name }}</h1>
+  <Todo :user_id="id" />
   <div>
     <Button :onClick="remove">Remove</Button>
   </div>
@@ -8,14 +9,16 @@
 </template>
 
 <script setup type="ts">
+import Todo from "~/components/Todo.vue";
+const id = ref(0)
 const name = ref("")
 const { $repository } = useNuxtApp();
 
 const nameFromDB = async () => {
   const axios = $repository.getAxios();
   const route = useRoute();
-  const id = route.path.split("/")[2];
-  const response = await axios.get(`/api/users/${id}`)
+  id.value = route.path.split("/")[2];
+  const response = await axios.get(`/api/users/${id.value}`)
   if (!response || !response.data || !response.data.name) return;
   name.value = response.data.name
 }
