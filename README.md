@@ -1,4 +1,7 @@
 # Rails Nuxt Todo
+
+Ruby on Rails　と Nuxt.js で Todoリストを開発してみました。
+
 ## 実行方法
 ### Ruby
 ```bash
